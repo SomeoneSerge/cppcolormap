@@ -58,13 +58,14 @@ PYBIND11_MODULE(_cppcolormap, m)
 
     m.def(
         "rgb2hex",
-        static_cast<std::string (*)(const xt::pytensor<double, 1>&)>(&cppcolormap::rgb2hex),
+        static_cast<std::string (*)(const xt::pytensor<double, 1>&)>(
+            &cppcolormap::rgb2hex<xt::pytensor<double, 1>>),
         DOC("rgb2hex"));
 
     m.def(
         "rgb2hex",
         static_cast<std::vector<std::string> (*)(const xt::pytensor<double, 2>&)>(
-            &cppcolormap::rgb2hex),
+            &cppcolormap::rgb2hex<xt::pytensor<double, 2>>),
         DOC("rgb2hex"));
 
     m.def(
